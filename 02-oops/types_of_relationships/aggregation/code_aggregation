@@ -1,0 +1,30 @@
+class address{
+    String city; 
+    String state; 
+    public address(String city, String state){
+        this.city = city;
+        this.state = state;
+    }
+}
+
+class Student{
+    String name; 
+    int idno; 
+    address addr;  // HAS-A relationship. // Aggregation.
+    public Student(String name, int idno, address addr){
+        this.name = name;
+        this.idno = idno;
+        this.addr = addr;
+    }
+}
+
+public class example {
+    public static void main(String[] args) {
+        address a1 = new address("Rohtak", "Haryana");
+        Student s1 = new Student("Rohit", 123, a1);
+        System.out.println(s1.name); // Rohit
+        System.out.println(s1.idno); // 123
+        System.out.println(s1.addr.city); // Rohtak
+        System.out.println(s1.addr.state); // Haryana
+    }
+}
