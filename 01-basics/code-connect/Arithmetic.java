@@ -1,5 +1,3 @@
-package JAVA.01-basics.code-connect;
-
 public class Arithmetic{
     public static void main(String[] args){
         double a = 10.345;
