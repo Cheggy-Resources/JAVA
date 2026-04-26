@@ -1,0 +1,146 @@
+- INHERITENCE: 
+    - BASIC IDEA: 
+        - reusing the functionalities of an existing class in a new class.
+        - Existing class - parent class / base class 
+        - New class - child class / derived class
+        - Child class will inherit all data members and member functions of parent class. 
+        - Even nested classes too. 
+        - BUT Not constructors... 
+        - Follows IS-A relationship. 
+        - class Person {
+    
+        } 
+          class Student extends Person{
+    
+        }
+        - extends → class inherits from class (class → class inheritance)
+        - implements → class inherits from interface (interface → class inheritance)
+
+    - PARENT REF VAR and SUBCLS OBJECT: 
+        - Subclass object contains - uske DM + MFs  and  Parent DMs and MFs. 
+        - Parent cls ref variable can hold Child class object. 
+            - However, we can only access - parent class DM + MFs only. 
+            - To access both, we have to use subclass reference variable. 
+    
+    - super() 
+        - It is used to invoke parent class constructor. 
+        - Differentiate members of super class and sub class. 
+        - Suppose there's a method called display() which is overridden, we can use super.display() from subclass => IT WILL CALL THE PARENT METHOD NOT THE OVER-RIDDEN ONE. 
+        - super.x / super.display() -> dono we can use. 
+        - Suppose if there is a <constructor-overloading> in the parent class and we have called super(), then it will call the constructor based on the parameters which is passed. - IT SHOULD BE THE FIRST LINE.
+    
+    - extends vs implements: 
+        - extends used by -> (to inherit props & behav of)  [class - class / interface - interface]. 
+        - implements used by CLASS to inherit props and behavs of INTERFACE.
+        - IMPLEMENTS and EXTENDS normally follow IS-A relationship. 
+    
+    - instanceof operator is used to find whether subclass is actually an instance of super class. 
+        - returns true if yes else false.
+
+    - IMPORTANT: 
+            class Rohu {
+                int x = 10;
+            }
+
+            class Machlii extends Rohu {
+                int x = 20;
+            }
+
+            Rohu obj = new Machlii();
+            System.out.println(obj.x);
+
+        - Here obj.x prints 10 and not 20. due to COMPILE TIME BINDING. 
+
+        - WHAT HAPPENED IN THE ENTIRE FLOW???
+        - COMPILE TIME: (javac ....java)
+            - Sara syntax check kiya
+            - Reference based checks kiya - like ye method call ho sakta hai ya ni, ye field we can access or not. 
+            - Binding -> obj.x binded with Rohu.x 
+                - Doesnt decide for methods now. 
+            - If compilation is successful, then BYTECODE IS generated. (.class file generated.)
+        - CLASS LOADING: (Java Main)
+            - Reads and loads both class files. 
+            - Abhi tak ka info: JVM has dono class ka naam, unke field & method lists, uska constructor and access modifers ka info. 
+            - Initially Rohu cls load hua...layout banega....(object mai konsi field kiske bad store hogi uski layout)
+              CLASS LAYOUT: 
+              Rohu.x -> offset 0 
+            - Fir Machhli cls load hua uska layout bana...(object mai konsi field kiske bad store hogi uski layout)
+              CLASS LAYOUT: 
+              Rohu.x -> offset 0 
+              Machliii.x -> offset 4 
+            - Dono alag hai...no override...
+        - LINKING: 
+            - Verification -> for any illegal access. 
+            - Static vars are assigned with memory. 
+            - Resolution -> obj.x - Rohu.x (decided during Compile time) -> ab usse address/offset miljayega.
+        - INITIALIZATION:
+            - static vars are assigned with values. 
+            - static objects are created. 
+        - RUNTIME: 
+            - Object bana. 
+            - Use mem allocate huiii
+            - Instance var will be assigned memory with default values. 
+            - Instance vars are initialised. 
+            - Rohu const call hua. 
+            - Machliii const call hua. 
+            - Methods call hogaa. 
+    
+    - IMPORTANT: 
+            - public class Rohu{
+                int x; 
+                public Rohu(){
+                    x = 40;
+                }
+
+                public void getRohu(){
+                    System.out.println("Udta fire dil sambhalna jane naa!!"); 
+                }
+            }
+
+            class Machlii extends Rohu{
+                int y; 
+                Machlii(){
+                    y = 45;
+                }
+                public void getMaachhaah(){
+                    System.out.println("Ude dil befikreeee"); 
+                }
+            } 
+
+            public class Main{
+                public static void main(String[] args){
+                    Rohu obj = new Machlii(); 
+                    System.out.println(obj.x); 
+                    obj.getRohu(); 
+
+                    Machlii obj2 = new Machlii();
+                    System.out.println(obj2.x); 
+                    System.out.println(obj2.y); 
+                    obj2.getMaachhaah(); 
+                    obj2.getRohu();
+                }
+            }
+    
+        -  We made an Machliii object. So how its calling Rohu Constuctor and getting x = 40.??
+        - JVM sees Machliii ka object banana hai. but child cannot exist without parent class. So it automatically calls super() and invokes the parent cls constructor. and then child cls constructor will be called.
+        - HOW THE FLOW HAPPENS??
+            - Memory allocated 
+               x = 0   y = 0 
+            - JVM calls super() 
+            - x = 40 (by Rohu() constructor) 
+            - y = 45 (by Machliii() constructor) 
+        - WHY THEN Machliii object cannot call getMachhah() ???
+        - Initially during compilation, Compiler checks just the reference type. which was ROHU. and doesnt bother to see the object. 
+        - Thinks its an object of ROHU cls. and thus it gives a compilation error when we can getMachhah() as its a method for Machliii cls. 
+        - Once it gets compiled properly, then we move towards runtime. 
+        - In runtime, we check whether the particular method is overridden or not. If it is we will call the child method else parent one. 
+        - WHY child?? "object ka real behav child define karta hai than parent." 
+        - BUT this happens only in case of Methods (RUNTIME BINDING HAPPENS HERE...)
+
+    - TYPES OF INHERITENCE: 
+        - SINGLE -> B extends A
+        - MULTILVL -> B extends A and C extends B....
+        - HIERARCHICAL -> B extends A and C extends A....
+        - MULTIPLE -> B,C extends A ❌❌ (((not in java...)))
+            - Solution was: to use interfaces to achieve this. 
+  
