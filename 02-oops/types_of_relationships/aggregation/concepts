@@ -1,0 +1,6 @@
+- AGGREGATION:- 
+    - Relationship between two classes where one class contains an instance of another class. 
+    - Follows HAS-A Relationship. 
+    - WHY NEEDED ?? Code reusability. 
+    - Here, there will be a "part" and a "whole". 
+        - "part" can exists even without the "whole". 
