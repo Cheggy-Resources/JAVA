@@ -1,0 +1,665 @@
+1. Introduction to Java:
+- Popular programming language, owned by Oracle. 
+- Works on different platforms (Windows, Linux, Mac)
+- Easy to learn, simple to use, high-level, open-source, fast, secure, huge community.
+- Object oriented Programming Language. 
+- Mobile, Desktop, Web, game applications 
+- Write Once Run Anywhere (WORA) => Compiled code (.class file) can be run on any platform jismai JVM (based on OS) installed hai. 
+- Terms and its meanings:- (JAVA FEATURES)
+    - Secure -> java restricts direct access to underlying memory or OS to avoid unauthorised access and memory corruption.
+    - Portable -> Same code written in Windows machine can be executed in Linux/MacOS machine without any changes. 
+    - Robust -> java provides strong compile time checks for syntax and structures and runtime error handling to avoid crashes.
+    - Dynamic -> adapts to evolving env. 
+        -> stores more runtime info than c and c++ which solves object access related issues.
+    - Multithreading -> Multiple threads concurrently run kar rahe hote hai to accomplish sub-tasks of a single process 
+        -> Shared Memory hota hai 
+        -> Fast Communication 
+        -> Challenges:- Deadlock, Race Condition etc 
+        -> eg.  YT application (process)
+            -> T1 - video play 
+            -> T2 - comments show 
+            -> T3 - loading further video    
+            Teeno threads parallely kaam kar rahe hain in a single process.  
+    - Multiprocessing -> Multiple independent processes ek sath run karna. 
+        -> No shared memory. 
+        -> More Safe than multi-threading but its heavier. 
+        -> like chrome, vs code ek sath chalana.
+    - Distributed -> Multiple computers ek sath milke kam kar rahe hain to complete a task.  
+        -> Bigger problem is divided into multiple smaller ones. 
+        -> Each machine works on one smaller problem. 
+        -> All results are then merged to get the desired result. 
+        -> eg: Google Search 
+            -> Different servers ke query krte hain
+            -> Unke results ko combine karke hame result milta hai. 
+        -> Highly used for scalability and fault-tolerance. 
+            -> Data is also distributed and stored accross multiple machines. 
+            -> Even replicas are stored.  
+
+2. JAVA vs C++
+- Java is platform independent. compiled code can be run anywhere provided the machine has JVM. 
+  C++ is machine dependent. If .exe file is generated in Windows, can't run it in Linux.
+  
+- Java mai object management is done automatically.
+  C++ mai we need to do it more manually (new, delete) 
+
+- Java support concepts of threads but C++ doesn't.
+- Java doesn't have goto keyword. uses break/continue to move to certain part. 
+- Java doesn't provide global scope like C++. has package scope instead. 
+
+3. Snippet: 
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello Aman!");
+    }
+}
+[CODE-CHECKOUT-----experiments/beginner/Main.java]
+- public - JVM can access this particular class/method from anywhere 
+- class Main - Made a class named "Main"... 
+- static - JVM doesnt need to create any object. It can directly call Main.main() 
+- void - no return  
+- main() - method name 
+- String[] args - by default, command line se jo bhi ip comes is string. then it is parsed into different dtypes. 
+so this an array of args...
+- System - some built-in class...
+- out - output stream 
+- println - method which prints and takes to next line. 
+
+4. How .java code compiles and output is shown???
+- Computer doesnt understand Main.java file. It needs to be converted to 0s and 1s.
+- javac (java compiler) compiles it to form the bytecode (not 0s and 1s something intermediate). It checks the entire syntax as well as structures, if everything is perfect then it forms Main.class file else COMPILATION ERROR...
+- java Main -> JVM starts and Class Loader(component in JVM loads file from hard disk to JVM ki memory) loads the main.class file in memory. JVM assigns memory to methods, vars etc.
+- JVM finds the main() 
+- Executes the entire code.
+- System.out is a static printstream object which gets connected to console whenever JVM starts. 
+   - printstream cls ka obj banega heap memory mai...out is just a reference to it. stores its address. 
+   - System cls ka data member is out which stores objects address, it is marked as static. so out will be stored in class ka METHOD area mai...
+- println() prints the text and moves to next line...
+
+5. INFO ON JDK JRE AND JVM (Coming Soon...)
+
+6. Info: 
+- Every code is written within a class.
+- Name of class starts with Caps letter. 
+- Name of methods start with lowercase letter. 
+- Name of public class = File name  
+  If no public class -> any name can be kept. 
+  If multiple public classes -> not possible 
+- Case sensitive
+- Extension - .java
+- Statement ends with ; 
+- print() -> no new line 
+- double quotes for text is neccessary.
+- System.out.println(3); // prints 3 
+- System.out.println(2 * 5); // prints 10
+- Single line comments // 
+- Multi line comments /* .... */ 
+- Documentation comments /** .... */ understood by javadoc tool - documentation of src code - used to create HTML based documentation. 
+- System.out.println("abc"*3); // COMPILE TIME ERROR 
+(* ke liye both needs to be numbers...)
+- System.out.println("abc"+3); // works 
+(+ is operator overloaded so whenever it sees a string with a +...java applies concatenation...)
+- reference is address. 
+
+7. Basic Terms which will be used further: 
+- Object -> instance of a class. 
+    -> have properties and behaviours. 
+    -> has a physical existence. 
+    -> eg. dog is a class => tommy is an object. 
+
+- Class -> blueprint that describes the properties and behaviours of objects. 
+    -> have data members and member functions. 
+    -> no physical existence. 
+
+- Methods -> behaviours 
+    -> get inputs. do certain tasks and return some value.
+    -> can be invoked 
+
+- Instance Variables -> non-static data members. stored in heap memory within object area. 
+    -> Lifetime - till object is there in heap memory.
+- Class Variables -> Static data members. 
+    -> Lifetime - till class definition is loaded in memory.
+- Local Variables -> eg. defined in a method.
+    -> Lifetime - till method ends. 
+- Access Modifiers -> default, public , protected, private 
+    -> Default - no accesss modifier is written. 
+- Non Access Modifiers ->  final, abstract, strictfp
+- Arrays -> multiple values of same type under a single name. 
+- Enums -> var is restricted to some pre-defined values. 
+- Interfaces -> contains declaration but not implementation. 
+
+8. Variables: 
+- String, int, float, char, boolean, double, byte
+- int ans = 6; 
+- final int a = 4; // cant rewrite it then
+- Use '+' to combine strings, ints, chars etc. // concatenation
+- int a = 4, b = 5, c = 6; 
+- int a , b , c;
+  a = b = c = 50; 
+
+9. Identifiers: 
+- unique names 
+- contains letters, nums, $, _ 
+- starts with letters, $, _ 
+- case sensitive 
+- no whitespaces 
+- no reserved words 
+
+10. OTHER SMALL THINGS REMAINNING IN BLOCK 1 (Comingg Soon....)
+
+11. Datatypes: 
+- int, float, double, char, boolean, short, byte, long -> PRIMITIVE DTYPES
+- classes, strings, arrays -> NON - PRIMITIVE DTYPES
+- String is a NON-PRIMITIVE dtype - because we make its object and then call its different methods. 
+- Primitive ones stores values directly whereas non-primitive ones stores references/addresses.
+Like Arrays stores actual values in heap memory and address [0] in stack memory.
+- Range -> byte < short < int < long 
+- float - 7.8 decimals 
+- double - 15.16 decimals 
+- End the value with an "f" for floats and "d" for doubles. 
+- float f1 = 35e3f; // 35000 
+- boolean - true/false
+- char - single quotes - ASCII value - A to Z (65-90) - a to z (97-122) 
+- var - automatically identifies the dtype...but we cant change stype once allocated. 
+- Narrow Casting (big to small) -> manually (dtype)..
+- Widening Casting (small to big) -> automatically... no loss of data...
+- byte < short < char < int < long < float < double. 
+
+12. Operators: 
+- Arithmetic Operators:  + - * / % ++ --  (10/3 = 3)
+    -> ++ -- works for int, char, byte, float, double, short. <NOT BOOLEAN>
+- Assigment: = += -= *= /= %= &= |= <<= >>= ^=
+- Comparison/Relational: == > < >= <= != 
+- Logical: && || ! (true -> false / false -> true)
+- Bitwise: & | >> << ~ (flips bits) ^ (same 0 alag 1) >>> 
+    -> >> (right shift):- positive then aage 1 else 0 
+    -> >>> (zero right shift):- always aage 0 
+- instanceof operator:- used for ref var like is a relationship. checks 'abc' ref var is actually of this dtype or not => returns true/false
+- Precedence: 
+  () [] .    POSTFIX OPERATORS
+  ++ -- + - (unary wala -> y = -x) ~ !  UNARY OPERATOR (r - l associativity)
+  *, /, %
+  +, - 
+  >> << >>> 
+  >, <, >=, <=, instanceof 
+  ==, != 
+  & 
+  ^ 
+  | 
+  && 
+  || 
+  ?: TERNARY (r - l associativity)
+  = += -= *= /= %= &= ^= |= <<= >>= >>>= ASSIGNMENT (r - l associativity)
+
+13. Conditionals: 
+- if(cond) {...}  
+- if(cond) {...}  else {...} 
+- if(cond) {...}  else if(cond) {...} ... else {...} 
+- x = (cond)? {.true.} : {.false.};  
+- Nested If 
+- Switch: 
+  switch(expression){
+    case {value} :  .... break;
+    case {value} :  .... break;
+    default: ....
+  } 
+  value = int/char/byte/short/string/enum only        
+
+14. Looping: 
+- while(condition){.... updation;} 
+- do {....} while(cond); // runs at least once 
+- for(initial, cond, updation){...} 
+   -> for(;;) => infinite loop (none is mandatory inside.)
+- Nested Loops  
+- for(dtype var : array){...}     // for each loop
+- BREAK - completely breaks the loop 
+- CONTINUE - skips current iteration 
+
+15. OOPS: 
+- PROCEDURAL PROGRAMMING:- procedures/methods are written
+    -> fixed flow
+    -> tightly coupled (depends on other funcs output)
+- OBJECT ORIENTED PROGRAMMING:- objects are created
+    -> loosely coupled (less dependency on other factors)
+    -> faster than procedural and clear structure
+    -> reusability. 
+-------------------------------------------------------------------------------------------------------------
+[DOUBT]: Procedural Programming follows top-down approach but OOP follows bottom-up approach. HOW???
+-------------------------------------------------------------------------------------------------------------
+- MAIN ASPECTS: Classes, objects, access modifiers, inheritence, constructor, encapsulation, abstraction, polymorphism.
+    - Class -> More like a blueprint/template of an object. 
+        -> Has member functions and data members
+        -> No physical existence.
+        -> Eg: Fruits - CLASS 
+    - Object -> Instance of a class. 
+        -> Physical existence hota hai. 
+        -> has properties and behaviours.  
+        -> Eg: Apple, Mango, Orange - OBJECTS 
+    [CODE-CHECKOUT-----experiments/oops/Student.java]
+    - 4 MAJOR PILLARS -> Encapsulation, Inheritence, Polymorphism and Abstraction. 
+    - Inheritence -> reusing the functionalities of an existing class in a new class.
+        -> Existing class - parent class / base class 
+        -> New class - child class / derived class
+        -> Child class will inherit all data members and member functions of parent class. 
+    - Polymorphism -> existing in many forms with same name.
+        -> Achieved by using method overloading and method overidding. 
+        -> Method overloading is performed in the same class. 
+        -> Method Overidding requires inheritence prop (both parent and child class).
+    - Abstraction -> hiding imp implementation details and functionalities. 
+        -> Achieved by using abstract classes and interfaces. 
+        -> eg. Car => performs abstraction 
+    - Encapsulation -> binding all DMs and MFs as a single unit. 
+        -> Imp feature here is:- DATA HIDING. <implements info hiding - fields/DMs>
+        -> eg. Class where DMs are private and MFs are public where we access data via getter-setters. 
+    - Constructors -> object created and its gets automatically called. 
+        -> Matches the name of class 
+        -> no return type 
+        -> Tried making all different constructors based on access modifiers. 
+        -> public - object can be created from anywheree 
+        -> protected - object can be created only in same package & sub-classes 
+        -> default - object can be created only in same package `
+        -> private - same class 
+    
+- KEY POINTERS REQUIRED: 
+    - CLASS -> FIELDS + METHODS
+        -> Uses . operator to access attributes. 
+            -> ObjectReference.variableName;
+            -> ObjectReference.MethodName();
+        -> FIELDS: 
+            -> data members
+            -> {access_modifier} {data-type} attribute_name;
+            -> if static - no need of object (gets stored in METHOD AREA).
+            -> if not static - need object to access it. [SAM<DOUBT>]
+            -> if a field is marked as [FINAL], then trying to change it will give [COMPILATION-ERROR].
+        -> METHODS: 
+            -> member functions
+            -> {access_modifier} {return-type} method_name(attributes list) {....}
+            -> if static - definition is stored in METHOD AREA. 
+                -> stores its local vars in stack memory just like normal method when invoked. 
+                -> ACCESSING - {class-name}.{method-name}(params)
+            -> if not static - need object to invoke it.
+                -> ACCESSING - obj.method (params)
+            -> All methods can access all the fields of the same class irrespective of its access modifier. 
+    - Instance Variables -> non-static data members. stored in heap memory within object area. 
+        -> Lifetime - till object is there in heap memory.
+    - Class Variables -> Static data members. 
+        -> Lifetime - till class definition is loaded in memory.
+    - Local Variables -> eg. defined in a method.
+        -> Lifetime - till method ends. 
+    - Access Modifiers -> default, public , protected, private 
+        -> Default - no accesss modifier is written. 
+    - this -> reference to the object of the current cls. 
+        -> Differentiates instance vars from local vars
+        -> this.age = age 
+        -> this(4) => is used to call any other constructor from a constructor of same class. => EXPLICIT CONSTRUCTOR INVOCATION.
+    - finalize() -> its called for cleanup process and allows objects to terminate properly. 
+        -> JVM may/maynot call it before object destruction. 
+        -> Garbage Collection is automatically done by JVM. 
+            -> Any unreachable allocated heap memory is eligible for GC.
+        -> Depreciated now due to its unpredictability. 
+
+- INFO TO GAIN: 
+    - BASIC INFO: 
+        -> package declaration should be at the top. 
+        -> import statements should be next. 
+        -> file can have only one public cls. 
+        -> file can have multiple non public classes. 
+        -> class declaration should only be after package declaration and then import statements. 
+        -> By default, [FIELDS] in Interface are [public-static-final]    
+            -> [WHY??] - Interfaces fields are used by classes (so needs to be public.), interfaces dont have objects (so static.), declared by interfaces cant be changed. its a contract (so final.)
+        -> By default, [METHODS] in Interface are [public-abstract]
+            -> [WHY??] - Interface Methods are implemented by classes (so needs to be public.), interface methods must be implemented (so abstract.)
+        -> Classes and interface cannot be private or protected. 
+        -> Classes can have protected methods and fields. but interfaces cannot. 
+            -> [WHY??] - Methods of class can still be invoked using getters-setters. same with fields. 
+            -> But Interface is a contract, it can implemented anywhere, within or out the package. so it needs to be public abstract(methods) and public static final (fields). 
+
+    - PASS BY VALUE and PASS BY REFERENCE: 
+        -> Java has only pass-by-value. not pass-by-reference. 
+        -> If we pass an var as param, it will simply create another local var and store it in. 
+        -> If we pass a reference as param, it will create another ref var and store that address in it. 
+        -> So no pass by reference.
+        -> Unlike C++ which used to point to same var which was passed as param using concept of REFERENCE VAR.
+    - PASSING VAR LENGTH ARGUMENTS:- 
+        -> only one such argument can be used. 
+        -> should be the last one. 
+        -> uses ellipsis (...)
+        -> eg: double... numbers
+        -> passed methodName(3,5,6.7,45,4.6) => internally a double array will be created in heap memory and ref gets stored in stack memory - in ref var numbers. 
+        -> Suppose, if we have an array with no reference var in stack memory then that array is not reachable. ELIGIBLE FOR GARBAGE COLLECTION....
+    - FINAL KEYWORD: 
+        -> VARIABLE - we cannot change its value. 
+        -> METHOD - we cannot override / change its implementation. 
+        -> CLASS - no child (extend / implements)
+
+- NESTED CLASS: 
+    - Outer class can have access modifier -> public/default
+        - [WHY-NO-PRIVATE?] -> if cls is private, its only visible in the same class itself. NO ONE CAN ACCESS. NO meaning. 
+        - [WHY-NO-PROTECTED] -> protected means same package + sub-classes. but to extend this cls, u should first have the visibility of this cls wherever we are trying to extend. so if a sub-cls is made in different package, it wont be visible there initially, so JAVA restricts it. 
+    - Inner class can have -> public/protected/default/private 
+        - [WHY?] -> ATLEAST they will be accessible in its outer class. 
+    - Access Modifiers of classes define its visibilty. 
+        - If inner one is private -> MAX visibilty is OUTER CLASS. 
+        - Public -> everywhere   
+        - Default -> same package 
+        - Protected -> Same package + sub classes. 
+    - Static/Non-Static just decides whether object is required or not. 
+    - Accesss Modifiers of constructor decides just the OBJECT CREATION. 
+        - So, If constructor is private. we can still access that class ke obj ka method outside. 
+        - But, if class is private, then nothing can be done. NO ACCESS...
+        - If constructor is private: We have 3 methods: 
+            - STATIC FIELD - ek hi object banega overall. 
+                - ref stored in <Method area>. obj in <heap>.
+                - make an object of the cls as a DM. declare it <public> and <static>.
+                - [IMP] -> PUBLIC defined hai. anyone can change it. SO <Less secure>.
+            - SINGLETON CLASS -> ek hi object banega iss cls ka. 
+                - make an object of the cls as a DM. declare it <private> and <static>.
+                - use getter method to return this object. 
+            - FACTORY METHOD -> object is created inside that getter func. so as many we want it can be created.
+        [CODE-CHECKOUT-----experiments/oops/nested_class]
+
+- MEMORY LAYOUT: 
+[CODE-CHECKOUT-----experiments/oops/memory_layout]
+
+- CONSTRUCTOR: 
+    - object created and its gets automatically called.  
+    - matches name as class. 
+    - no return type 
+    - TYPES:  
+        - NO-ARGS => nothing is passed.
+        - DEFAULT => not created in class.  
+        - PARAMETERISED => Params are passed. 
+    - Constructor Overloading => same name, different args, (return type doesnt matter)
+
+- INHERITENCE: 
+    - BASIC IDEA: 
+        - reusing the functionalities of an existing class in a new class.
+        - Existing class - parent class / base class 
+        - New class - child class / derived class
+        - Child class will inherit all data members and member functions of parent class. 
+        - Even nested classes too. 
+        - BUT Not constructors... 
+        - Follows IS-A relationship. 
+        - class Person {
+    
+        } 
+          class Student extends Person{
+    
+        }
+        - extends → class inherits from class (class → class inheritance)
+        - implements → class inherits from interface (interface → class inheritance)
+
+    - PARENT REF VAR and SUBCLS OBJECT: 
+        - Subclass object contains - uske DM + MFs  and  Parent DMs and MFs. 
+        - Parent cls ref variable can hold Child class object. 
+            - However, we can only access - parent class DM + MFs only. 
+            - To access both, we have to use subclass reference variable. 
+    
+    - super() 
+        - It is used to invoke parent class constructor. 
+        - Differentiate members of super class and sub class. 
+        - Suppose there's a method called display() which is overridden, we can use super.display() from subclass => IT WILL CALL THE PARENT METHOD NOT THE OVER-RIDDEN ONE. 
+        - super.x / super.display() -> dono we can use. 
+        - Suppose if there is a <constructor-overloading> in the parent class and we have called super(), then it will call the constructor based on the parameters which is passed. - IT SHOULD BE THE FIRST LINE.
+    
+    - extends vs implements: 
+        - extends used by -> (to inherit props & behav of)  [class - class / interface - interface]. 
+        - implements used by CLASS to inherit props and behavs of INTERFACE.
+        - IMPLEMENTS and EXTENDS normally follow IS-A relationship. 
+    
+    - instanceof operator is used to find whether subclass is actually an instance of super class. 
+        - returns true if yes else false.
+
+    - IMPORTANT: 
+            class Rohu {
+                int x = 10;
+            }
+
+            class Machlii extends Rohu {
+                int x = 20;
+            }
+
+            Rohu obj = new Machlii();
+            System.out.println(obj.x);
+
+        - Here obj.x prints 10 and not 20. due to COMPILE TIME BINDING. 
+
+        - WHAT HAPPENED IN THE ENTIRE FLOW???
+        - COMPILE TIME: (javac ....java)
+            - Sara syntax check kiya
+            - Reference based checks kiya - like ye method call ho sakta hai ya ni, ye field we can access or not. 
+            - Binding -> obj.x binded with Rohu.x 
+                - Doesnt decide for methods now. 
+            - If compilation is successful, then BYTECODE IS generated. (.class file generated.)
+        - CLASS LOADING: (Java Main)
+            - Reads and loads both class files. 
+            - Abhi tak ka info: JVM has dono class ka naam, unke field & method lists, uska constructor and access modifers ka info. 
+            - Initially Rohu cls load hua...layout banega....(object mai konsi field kiske bad store hogi uski layout)
+              CLASS LAYOUT: 
+              Rohu.x -> offset 0 
+            - Fir Machhli cls load hua uska layout bana...(object mai konsi field kiske bad store hogi uski layout)
+              CLASS LAYOUT: 
+              Rohu.x -> offset 0 
+              Machliii.x -> offset 4 
+            - Dono alag hai...no override...
+        - LINKING: 
+            - Verification -> for any illegal access. 
+            - Static vars are assigned with memory. 
+            - Resolution -> obj.x - Rohu.x (decided during Compile time) -> ab usse address/offset miljayega.
+        - INITIALIZATION:
+            - static vars are assigned with values. 
+            - static objects are created. 
+        - RUNTIME: 
+            - Object bana. 
+            - Use mem allocate huiii
+            - Instance var will be assigned memory with default values. 
+            - Instance vars are initialised. 
+            - Rohu const call hua. 
+            - Machliii const call hua. 
+            - Methods call hogaa. 
+    
+    - IMPORTANT: 
+            - public class Rohu{
+                int x; 
+                public Rohu(){
+                    x = 40;
+                }
+
+                public void getRohu(){
+                    System.out.println("Udta fire dil sambhalna jane naa!!"); 
+                }
+            }
+
+            class Machlii extends Rohu{
+                int y; 
+                Machlii(){
+                    y = 45;
+                }
+                public void getMaachhaah(){
+                    System.out.println("Ude dil befikreeee"); 
+                }
+            } 
+
+            public class Main{
+                public static void main(String[] args){
+                    Rohu obj = new Machlii(); 
+                    System.out.println(obj.x); 
+                    obj.getRohu(); 
+
+                    Machlii obj2 = new Machlii();
+                    System.out.println(obj2.x); 
+                    System.out.println(obj2.y); 
+                    obj2.getMaachhaah(); 
+                    obj2.getRohu();
+                }
+            }
+    
+        -  We made an Machliii object. So how its calling Rohu Constuctor and getting x = 40.??
+        - JVM sees Machliii ka object banana hai. but child cannot exist without parent class. So it automatically calls super() and invokes the parent cls constructor. and then child cls constructor will be called.
+        - HOW THE FLOW HAPPENS??
+            - Memory allocated 
+               x = 0   y = 0 
+            - JVM calls super() 
+            - x = 40 (by Rohu() constructor) 
+            - y = 45 (by Machliii() constructor) 
+        - WHY THEN Machliii object cannot call getMachhah() ???
+        - Initially during compilation, Compiler checks just the reference type. which was ROHU. and doesnt bother to see the object. 
+        - Thinks its an object of ROHU cls. and thus it gives a compilation error when we can getMachhah() as its a method for Machliii cls. 
+        - Once it gets compiled properly, then we move towards runtime. 
+        - In runtime, we check whether the particular method is overridden or not. If it is we will call the child method else parent one. 
+        - WHY child?? "object ka real behav child define karta hai than parent." 
+        - BUT this happens only in case of Methods (RUNTIME BINDING HAPPENS HERE...)
+
+    - TYPES OF INHERITENCE: 
+        - SINGLE -> B extends A
+        - MULTILVL -> B extends A and C extends B....
+        - HIERARCHICAL -> B extends A and C extends A....
+        - MULTIPLE -> B,C extends A ❌❌ (((not in java...)))
+            - Solution was: to use interfaces to achieve this. 
+    [CODE-CHECKOUT-----experiments/pillars_of_oops/inheritence]
+
+
+- AGGREGATION:- 
+    - Relationship between two classes where one class contains an instance of another class. 
+    - Follows HAS-A Relationship. 
+    - WHY NEEDED ?? Code reusability. 
+    [CODE-CHECKOUT-----experiments/pillars_of_oops/aggregation]
+
+- POLYMORPHISM: 
+    - Ability to take on multiple forms (show different behav) based on situations. Can be an object or a method. 
+    - Eg: Animal p = new cat(); 
+        p = new dog(); 
+        - Reference variable same hi hai (Animal p) but usne jis object ka reference store kiya hai wo alag alag hai. 
+        - Based on situation, isne bhi apna behav/form badal diya. 
+    - Any JAVA objects with more than 1 IS-A relationship is considered to be <polymorphic>. 
+    - All JAVA objects are polymorphic. 
+        - cat IS A cat. 
+        - cat IS A object. 
+        - These two are fixed for every object. 
+
+    - REFERENCE VARIABLE: 
+        - Cannot change the type of reference variable once assigned. 
+        - Can point to any object of its cls type or its subcls type. 
+        - Can be of a class or an interface. 
+        - Defines what we can access. 
+
+    - TYPES OF POLYMORPHISM:
+        - Compile time polymorphism / Static Polymorphism 
+            - performed by [method-overloading]
+        - Run time polymorphism / Dynamic Polymorphism 
+            - performed by [method-overriding]
+
+    - Virtual Method -> Wo methods jo runtime pe call hote hain based on object type are virtual methods.
+
+    - OVERRIDING: 
+        - means to override the functionality of an existing method. 
+        - WHY NEEDED ?? to define a behav specific to child cls. 
+        - WHILE OVERRIDING, we can have:
+            - different access modifers - provided child cls AM has [equal-or-more] visibility. 
+            - different return types - provided child cls return type follows [is-a] relationship with return type of parent. 
+            - NO, we need to have <same> [list-of-paramters].
+        - TWO PRIMARY CONDITIONS FOR OVERRIDDING: 
+            - method is inherited to child cls. 
+            - Redefined by child cls.
+        - static methods are not overridden 
+            - they belong to class not object. settled during the compile time itself. 
+            - no requirement of object to call those methods. 
+            - parent and child can have same name static methods. BASED ON REFERENCE TYPE - will be decided in COMPILE TIME BINDING itself, that which method will be called.
+        - While overridding, both methods have to be [non-static]. Koi bhi ek static hogya -> ERROR.
+        - If we mark a method as [final], then we cannot override it. 
+            - But we can call the parent one still.
+        - If we mark a method as [private], then we cannot override it. 
+            - Also we cannot call the parent method -> NO VISIBILITY due to PRIVATE AM. 
+        - CONSTRUCTOR cannot be overridden. 
+            - [WHY??] -> because it is not inherited. 
+        - Use @Override
+            - Performs compile time error checks. 
+            - Catches bugs early.
+        [CODE-CHECKOUT-----experiments/pillars_of_oops/polymorphism]
+
+    - METHOD OVERLOADING: 
+        - two or more methods with same METHOD NAME but with different params, is METHOD OVERLOADING. 
+        - OVERLOADING = same name + diff params list. 
+        - Return type, Access Modifier, static/non-static doesn't matter. 
+        [CODE-CHECKOUT-----experiments/pillars_of_oops/polymorphism]
+
+    - DYNAMIC BINDING: 
+        - Process in which linking between METHOD CALL and METHOD IMPLEMENTATION is solved at runtime is called as DYNAMIC BINDING. 
+        - Late Binding 
+        - Decided based on type of objects not reference type. 
+        - ALL Virtual methods performs DYNAMIC BINDING. 
+        - if super keyword is used inside child class non static method - it calls parent ones. 
+        [CODE-CHECKOUT-----experiments/pillars_of_oops/polymorphism/overriding] 
+    
+    - STATIC BINDING: 
+        - Process in which linking between METHOD CALL and METHOD IMPLEMENTATION is solved at compile time is called as STATIC BINDING. 
+        - Early Binding 
+        - Static/Final/Private methods - decided during compile time. 
+        - Decided based on type of reference not object type. 
+        - Method Overloading is STATIC BINDING. 
+            - Compile time mai hi usne signature match kiya and link kardiya.
+        [CODE-CHECKOUT-----experiments/pillars_of_oops/polymorphism/overloading] 
+    
+    - INSTANCE INITIALIZER BLOCK:
+        - Block declared inside a class to declare data members
+        - Executed once per object. 
+        - Executed before constructor call. 
+        - public class Tester {
+            public int a;
+            { 
+                a = 10; 
+            }   
+            Tester(){
+                a = 20;
+            }
+        }
+            - Initialised as 10 due to IIB then got overridden by constructor (20). 
+
+        - In case of child class, first parent constructor is called, then IIB, then child constructor.
+
+- ABSTRACT CLASSES: 
+    - [abstract] keyword is used to achieve this. 
+    - WHAT IT CAN HAVE??
+        - Abstract methods 
+        - Concrete Methods (with implementation/body)
+        - Constructors 
+        - Static vars and methods.
+        - Final methods (concrete ones) 
+        - Instance vars. 
+    - WHAT IT CANNOT HAVE?
+        - Cannot be declared final 
+            - [WHY??] because we need abstract classes to be extended to be of any use. final restricts it. 
+        - Instance cannot be created. 
+            - [WHY??] because it may/maynot have implementations of many methods. 
+        - Cannot be declared private 
+            - [WHY??] No visibility outside the same abstract class, so cant extend it. 
+    - ABSTRACT METHOD: 
+        - In any class, if there is even one abstract method, then it has to be declared as an abstract class. 
+        - Class extending abstract class should provide implementation of all abstract methods. 
+        - ABSTRACT METHOD -> abstract void show(); -> methods without body.
+        - Any class inheriting the current class must either override the abstract method or declare itself as abstract.  [CODE-CHECKOUT-----experiments/pillars_of_oops/abstraction/special.java]
+    [CODE-CHECKOUT-----experiments/pillars_of_oops/abstraction/abstract_class.java] 
+        
+- ABSTRACTION: 
+    - Hiding the implementation details from users, only functionality will be provided. 
+    - Users know what it does -- not how it does?
+    - Achieved by using ABSTRACT CLASSES and INTERFACES. 
+    [CODE-CHECKOUT-----experiments/pillars_of_oops/abstraction/abstract_class.java] 
+
+- INTERFACES: 
+    - WHAT IT CAN HAVE??
+        - Abstract methods ✅ (by default all are abstract)
+        - Concrete Methods ✅ (use default keyword.)
+        - Constructors ❌
+        - Static vars. ✅ (by default vars are static)
+        - static methods. ✅ 
+        - Final methods ❌
+        - Instance vars. ❌
+    - Method Body exists -> static methods and default methods. 
+    - Extension - .java 
+    - 
+    - 
+
+
+
+
