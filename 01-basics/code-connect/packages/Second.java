@@ -1,6 +1,6 @@
-package JAVA.01-basics.code-connect.packages;
+// package JAVA.01-basics.code-connect.packages;
 
-class second {
+class Second {
     public static void main(String[] args) {
       Main myObj = new Main();
       System.out.println(myObj.x);
