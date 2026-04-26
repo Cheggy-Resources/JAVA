@@ -1,0 +1,87 @@
+- POLYMORPHISM: 
+    - Ability to take on multiple forms (show different behav) based on situations. Can be an object or a method. 
+    - Eg: Animal p = new cat(); 
+        p = new dog(); 
+        - Reference variable same hi hai (Animal p) but usne jis object ka reference store kiya hai wo alag alag hai. 
+        - Based on situation, isne bhi apna behav/form badal diya. 
+    - Any JAVA objects with more than 1 IS-A relationship is considered to be <polymorphic>. 
+    - All JAVA objects are polymorphic. 
+        - cat IS A cat. 
+        - cat IS A object. 
+        - These two are fixed for every object. 
+
+    - REFERENCE VARIABLE: 
+        - Cannot change the type of reference variable once assigned. 
+        - Can point to any object of its cls type or its subcls type. 
+        - Can be of a class or an interface. 
+        - Defines what we can access. 
+
+    - TYPES OF POLYMORPHISM:
+        - Compile time polymorphism / Static Polymorphism 
+            - performed by [method-overloading]
+        - Run time polymorphism / Dynamic Polymorphism 
+            - performed by [method-overriding]
+
+    - Virtual Method -> Wo methods jo runtime pe call hote hain based on object type are virtual methods.
+
+    - OVERRIDING: 
+        - means to override the functionality of an existing method. 
+        - WHY NEEDED ?? to define a behav specific to child cls. 
+        - WHILE OVERRIDING, we can have:
+            - different access modifers - provided child cls AM has [equal-or-more] visibility. 
+            - different return types - provided child cls return type follows [is-a] relationship with return type of parent. 
+            - NO, we need to have <same> [list-of-paramters].
+        - TWO PRIMARY CONDITIONS FOR OVERRIDDING: 
+            - method is inherited to child cls. 
+            - Redefined by child cls.
+        - static methods are not overridden 
+            - they belong to class not object. settled during the compile time itself. 
+            - no requirement of object to call those methods. 
+            - parent and child can have same name static methods. BASED ON REFERENCE TYPE - will be decided in COMPILE TIME BINDING itself, that which method will be called.
+        - While overridding, both methods have to be [non-static]. Koi bhi ek static hogya -> ERROR.
+        - If we mark a method as [final], then we cannot override it. 
+            - But we can call the parent one still.
+        - If we mark a method as [private], then we cannot override it. 
+            - Also we cannot call the parent method -> NO VISIBILITY due to PRIVATE AM. 
+        - CONSTRUCTOR cannot be overridden. 
+            - [WHY??] -> because it is not inherited. 
+        - Use @Override
+            - Performs compile time error checks. 
+            - Catches bugs early.
+
+    - METHOD OVERLOADING: 
+        - two or more methods with same METHOD NAME but with different params, is METHOD OVERLOADING. 
+        - OVERLOADING = same name + diff params list. 
+        - Return type, Access Modifier, static/non-static doesn't matter. 
+
+    - DYNAMIC BINDING: 
+        - Process in which linking between METHOD CALL and METHOD IMPLEMENTATION is solved at runtime is called as DYNAMIC BINDING. 
+        - Late Binding 
+        - Decided based on type of objects not reference type. 
+        - ALL Virtual methods performs DYNAMIC BINDING. 
+        - if super keyword is used inside child class non static method - it calls parent ones. 
+    
+    - STATIC BINDING: 
+        - Process in which linking between METHOD CALL and METHOD IMPLEMENTATION is solved at compile time is called as STATIC BINDING. 
+        - Early Binding 
+        - Static/Final/Private methods - decided during compile time. 
+        - Decided based on type of reference not object type. 
+        - Method Overloading is STATIC BINDING. 
+            - Compile time mai hi usne signature match kiya and link kardiya.
+    
+    - INSTANCE INITIALIZER BLOCK:
+        - Block declared inside a class to declare data members
+        - Executed once per object. 
+        - Executed before constructor call. 
+        - public class Tester {
+            public int a;
+            { 
+                a = 10; 
+            }   
+            Tester(){
+                a = 20;
+            }
+        }
+            - Initialised as 10 due to IIB then got overridden by constructor (20). 
+
+        - In case of child class, first parent constructor is called, then IIB, then child constructor.
