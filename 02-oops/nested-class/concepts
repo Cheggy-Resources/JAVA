@@ -1,0 +1,26 @@
+ - NESTED CLASS: 
+    - Outer class can have access modifier -> public/default
+        - [WHY-NO-PRIVATE?] -> if cls is private, its only visible in the same class itself. NO ONE CAN ACCESS. NO meaning. 
+        - [WHY-NO-PROTECTED] -> protected means same package + sub-classes. but to extend this cls, u should first have the visibility of this cls wherever we are trying to extend. so if a sub-cls is made in different package, it wont be visible there initially, so JAVA restricts it. 
+    - Inner class can have -> public/protected/default/private 
+        - [WHY?] -> ATLEAST they will be accessible in its outer class. 
+    - Access Modifiers of classes define its visibilty. 
+        - If inner one is private -> MAX visibilty is OUTER CLASS. 
+        - Public -> everywhere   
+        - Default -> same package 
+        - Protected -> Same package + sub classes. 
+    - Static/Non-Static just decides whether object is required or not. 
+    - Accesss Modifiers of constructor decides just the OBJECT CREATION. 
+        - So, If constructor is private. we can still access that class ke obj ka method outside. 
+        - But, if class is private, then nothing can be done. NO ACCESS...
+        - If constructor is private: We have 3 methods: 
+            - STATIC FIELD - ek hi object banega overall. 
+                - ref stored in <Method area>. obj in <heap>.
+                - make an object of the cls as a DM. declare it <public> and <static>.
+                - [IMP] -> PUBLIC defined hai. anyone can change it. SO <Less secure>.
+            - SINGLETON CLASS -> ek hi object banega iss cls ka. 
+                - make an object of the cls as a DM. declare it <private> and <static>.
+                - use getter method to return this object. 
+            - FACTORY METHOD -> object is created inside that getter func. so as many we want it can be created.
+
+
