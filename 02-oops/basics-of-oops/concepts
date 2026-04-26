@@ -113,3 +113,13 @@
         -> VARIABLE - we cannot change its value. 
         -> METHOD - we cannot override / change its implementation. 
         -> CLASS - no child (extend / implements)
+
+- CONSTRUCTOR: 
+    - object created and its gets automatically called.  
+    - matches name as class. 
+    - no return type 
+    - TYPES:  
+        - NO-ARGS => nothing is passed.
+        - DEFAULT => not created in class.  
+        - PARAMETERISED => Params are passed. 
+    - Constructor Overloading => same name, different args, (return type doesnt matter)
