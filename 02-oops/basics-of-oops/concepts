@@ -1,0 +1,115 @@
+- PROCEDURAL PROGRAMMING:- procedures/methods are written
+    -> fixed flow
+    -> tightly coupled (depends on other funcs output)
+- OBJECT ORIENTED PROGRAMMING:- objects are created
+    -> loosely coupled (less dependency on other factors)
+    -> faster than procedural and clear structure
+    -> reusability. 
+-------------------------------------------------------------------------------------------------------------
+[DOUBT]: Procedural Programming follows top-down approach but OOP follows bottom-up approach. HOW???
+-------------------------------------------------------------------------------------------------------------
+- MAIN ASPECTS: Classes, objects, access modifiers, inheritence, constructor, encapsulation, abstraction, polymorphism.
+    - Class -> More like a blueprint/template of an object. 
+        -> Has member functions and data members
+        -> No physical existence.
+        -> Eg: Fruits - CLASS 
+    - Object -> Instance of a class. 
+        -> Physical existence hota hai. 
+        -> has properties and behaviours.  
+        -> Eg: Apple, Mango, Orange - OBJECTS 
+    [CODE-CHECKOUT-----experiments/oops/Student.java]
+    - 4 MAJOR PILLARS -> Encapsulation, Inheritence, Polymorphism and Abstraction. 
+    - Inheritence -> reusing the functionalities of an existing class in a new class.
+        -> Existing class - parent class / base class 
+        -> New class - child class / derived class
+        -> Child class will inherit all data members and member functions of parent class. 
+    - Polymorphism -> existing in many forms with same name.
+        -> Achieved by using method overloading and method overidding. 
+        -> Method overloading is performed in the same class. 
+        -> Method Overidding requires inheritence prop (both parent and child class).
+    - Abstraction -> hiding imp implementation details and functionalities. 
+        -> Achieved by using abstract classes and interfaces. 
+        -> eg. Car => performs abstraction 
+    - Encapsulation -> binding all DMs and MFs as a single unit. 
+        -> Imp feature here is:- DATA HIDING. <implements info hiding - fields/DMs>
+        -> eg. Class where DMs are private and MFs are public where we access data via getter-setters. 
+    - Constructors -> object created and its gets automatically called. 
+        -> Matches the name of class 
+        -> no return type 
+        -> Tried making all different constructors based on access modifiers. 
+        -> public - object can be created from anywheree 
+        -> protected - object can be created only in same package & sub-classes 
+        -> default - object can be created only in same package `
+        -> private - same class 
+    
+- KEY POINTERS REQUIRED: 
+    - CLASS -> FIELDS + METHODS
+        -> Uses . operator to access attributes. 
+            -> ObjectReference.variableName;
+            -> ObjectReference.MethodName();
+        -> FIELDS: 
+            -> data members
+            -> {access_modifier} {data-type} attribute_name;
+            -> if static - no need of object (gets stored in METHOD AREA).
+            -> if not static - need object to access it. [SAM<DOUBT>]
+            -> if a field is marked as [FINAL], then trying to change it will give [COMPILATION-ERROR].
+        -> METHODS: 
+            -> member functions
+            -> {access_modifier} {return-type} method_name(attributes list) {....}
+            -> if static - definition is stored in METHOD AREA. 
+                -> stores its local vars in stack memory just like normal method when invoked. 
+                -> ACCESSING - {class-name}.{method-name}(params)
+            -> if not static - need object to invoke it.
+                -> ACCESSING - obj.method (params)
+            -> All methods can access all the fields of the same class irrespective of its access modifier. 
+    - Instance Variables -> non-static data members. stored in heap memory within object area. 
+        -> Lifetime - till object is there in heap memory.
+    - Class Variables -> Static data members. 
+        -> Lifetime - till class definition is loaded in memory.
+    - Local Variables -> eg. defined in a method.
+        -> Lifetime - till method ends. 
+    - Access Modifiers -> default, public , protected, private 
+        -> Default - no accesss modifier is written. 
+    - this -> reference to the object of the current cls. 
+        -> Differentiates instance vars from local vars
+        -> this.age = age 
+        -> this(4) => is used to call any other constructor from a constructor of same class. => EXPLICIT CONSTRUCTOR INVOCATION.
+    - finalize() -> its called for cleanup process and allows objects to terminate properly. 
+        -> JVM may/maynot call it before object destruction. 
+        -> Garbage Collection is automatically done by JVM. 
+            -> Any unreachable allocated heap memory is eligible for GC.
+        -> Depreciated now due to its unpredictability. 
+
+- INFO TO GAIN: 
+    - BASIC INFO: 
+        -> package declaration should be at the top. 
+        -> import statements should be next. 
+        -> file can have only one public cls. 
+        -> file can have multiple non public classes. 
+        -> class declaration should only be after package declaration and then import statements. 
+        -> By default, [FIELDS] in Interface are [public-static-final]    
+            -> [WHY??] - Interfaces fields are used by classes (so needs to be public.), interfaces dont have objects (so static.), declared by interfaces cant be changed. its a contract (so final.)
+        -> By default, [METHODS] in Interface are [public-abstract]
+            -> [WHY??] - Interface Methods are implemented by classes (so needs to be public.), interface methods must be implemented (so abstract.)
+        -> Classes and interface cannot be private or protected. 
+        -> Classes can have protected methods and fields. but interfaces cannot. 
+            -> [WHY??] - Methods of class can still be invoked using getters-setters. same with fields. 
+            -> But Interface is a contract, it can implemented anywhere, within or out the package. so it needs to be public abstract(methods) and public static final (fields). 
+
+    - PASS BY VALUE and PASS BY REFERENCE: 
+        -> Java has only pass-by-value. not pass-by-reference. 
+        -> If we pass an var as param, it will simply create another local var and store it in. 
+        -> If we pass a reference as param, it will create another ref var and store that address in it. 
+        -> So no pass by reference.
+        -> Unlike C++ which used to point to same var which was passed as param using concept of REFERENCE VAR.
+    - PASSING VAR LENGTH ARGUMENTS:- 
+        -> only one such argument can be used. 
+        -> should be the last one. 
+        -> uses ellipsis (...)
+        -> eg: double... numbers
+        -> passed methodName(3,5,6.7,45,4.6) => internally a double array will be created in heap memory and ref gets stored in stack memory - in ref var numbers. 
+        -> Suppose, if we have an array with no reference var in stack memory then that array is not reachable. ELIGIBLE FOR GARBAGE COLLECTION....
+    - FINAL KEYWORD: 
+        -> VARIABLE - we cannot change its value. 
+        -> METHOD - we cannot override / change its implementation. 
+        -> CLASS - no child (extend / implements)
