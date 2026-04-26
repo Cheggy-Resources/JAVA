@@ -1,0 +1,42 @@
+- ABSTRACT CLASSES: 
+    - [abstract] keyword is used to achieve this. 
+    - WHAT IT CAN HAVE??
+        - Abstract methods 
+        - Concrete Methods (with implementation/body)
+        - Constructors 
+        - Static vars and methods.
+        - Final methods (concrete ones) 
+        - Instance vars. 
+    - WHAT IT CANNOT HAVE?
+        - Cannot be declared final 
+            - [WHY??] because we need abstract classes to be extended to be of any use. final restricts it. 
+        - Instance cannot be created. 
+            - [WHY??] because it may/maynot have implementations of many methods. 
+        - Cannot be declared private 
+            - [WHY??] No visibility outside the same abstract class, so cant extend it. 
+    - ABSTRACT METHOD: 
+        - In any class, if there is even one abstract method, then it has to be declared as an abstract class. 
+        - Class extending abstract class should provide implementation of all abstract methods. 
+        - ABSTRACT METHOD -> abstract void show(); -> methods without body.
+        - Any class inheriting the current class must either override the abstract method or declare itself as abstract.  [CODE-CHECKOUT-----experiments/pillars_of_oops/abstraction/special.java]
+    [CODE-CHECKOUT-----experiments/pillars_of_oops/abstraction/abstract_class.java] 
+        
+- ABSTRACTION: 
+    - Hiding the implementation details from users, only functionality will be provided. 
+    - Users know what it does -- not how it does?
+    - Achieved by using ABSTRACT CLASSES and INTERFACES. 
+    [CODE-CHECKOUT-----experiments/pillars_of_oops/abstraction/abstract_class.java] 
+
+- INTERFACES: 
+    - WHAT IT CAN HAVE??
+        - Abstract methods ✅ (by default all are abstract)
+        - Concrete Methods ✅ (use default keyword.)
+        - Constructors ❌
+        - Static vars. ✅ (by default vars are static)
+        - static methods. ✅ 
+        - Final methods ❌
+        - Instance vars. ❌
+    - Method Body exists -> static methods and default methods. 
+    - Extension - .java 
+    - 
+    -
