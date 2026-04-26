@@ -1,4 +1,4 @@
-public class string_argument_check {
+public class String_argument_check {
     public static void main(String[] args) {
         System.out.println(args[0]);
     }
